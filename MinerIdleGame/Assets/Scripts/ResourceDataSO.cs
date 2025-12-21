@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,7 +5,6 @@ using UnityEngine.Events;
 public class ResourceDataSO : ScriptableObject
 {
     public float Amount { get; private set; }
-    public float monetaryValue;
     
     public UnityAction<float> OnValueChanged;
 
