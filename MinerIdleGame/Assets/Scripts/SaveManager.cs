@@ -8,8 +8,10 @@ public class SaveManager : MonoBehaviour
 
     [SerializeField] private ResourceDataSO GoldOreData;
     [SerializeField] private ResourceDataSO MoneyData;
-    [SerializeField] private MiningController MiningController;
-    [SerializeField] private UpgradeManager UpgradeManager;
+    [SerializeField] private MinerData PlayerMinerData;
+    [SerializeField] private UpgradeManager PlayerMinerUpgradeManager;
+    [SerializeField] private MinerData AutomationMinerData;
+    [SerializeField] private UpgradeManager AutomationUpgradeManager;
     
     private string saveFileName = "gamedata.json";
 
@@ -32,8 +34,10 @@ public class SaveManager : MonoBehaviour
         SaveData data = new SaveData();
         data.CurrentMoney = MoneyData.Amount;
         data.GoldOreCount = GoldOreData.Amount;
-        data.MiningRate = MiningController.GetCurrentMiningRate();
-        data.CurrentCost = UpgradeManager.GetCurrentCost();
+        data.PlayerMinerLevel = PlayerMinerData.level;
+        data.PlayerMinerUpgradeCurrentCost = PlayerMinerUpgradeManager.GetCurrentCost();
+        data.AutomationMinerLevel = AutomationMinerData.level;
+        data.AutomationMinerUpgradeCurrentCost = AutomationUpgradeManager.GetCurrentCost();
         
         string json = JsonUtility.ToJson(data);
         
@@ -55,8 +59,10 @@ public class SaveManager : MonoBehaviour
             
             MoneyData.Load(data.CurrentMoney);
             GoldOreData.Load(data.GoldOreCount);
-            MiningController.Load(data.MiningRate);
-            UpgradeManager.Load(data.CurrentCost);
+            PlayerMinerData.Load(data.PlayerMinerLevel);
+            PlayerMinerUpgradeManager.Load(data.PlayerMinerUpgradeCurrentCost);
+            AutomationMinerData.Load(data.AutomationMinerLevel);
+            AutomationUpgradeManager.Load(data.AutomationMinerUpgradeCurrentCost);
             
             Debug.Log("Veriler Yüklendi.");
         }
@@ -66,22 +72,26 @@ public class SaveManager : MonoBehaviour
             
             MoneyData.Load(0);
             GoldOreData.Load(0);
-            MiningController.Load(1);
-            UpgradeManager.Load(10);
+            PlayerMinerData.Load(1);
+            PlayerMinerUpgradeManager.Load(10);
+            AutomationMinerData.Load(0);
+            AutomationUpgradeManager.Load(500);
         }
     }
 
     public void DeleteSave()
     {
+        MoneyData.Load(0);
+        GoldOreData.Load(0);
+        PlayerMinerData.Load(1);
+        PlayerMinerUpgradeManager.Load(10);
+        AutomationMinerData.Load(0);
+        AutomationUpgradeManager.Load(500);
+        
         string path = Path.Combine(Application.persistentDataPath, saveFileName);
         if (File.Exists(path))
         {
             File.Delete(path);
-            
-            MoneyData.Load(0);
-            GoldOreData.Load(0);
-            MiningController.Load(1);
-            UpgradeManager.Load(10);
             
             Debug.Log("Kayıt Silindi!");
         }

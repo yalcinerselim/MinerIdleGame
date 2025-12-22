@@ -3,25 +3,26 @@ using UnityEngine;
 public class MiningController : MonoBehaviour
 {
     [SerializeField] private ResourceDataSO oreData;
-    [SerializeField] private float miningRate = 1f;
+    [SerializeField] private MinerData minerData;
 
+    private float _timer;
+    
     public void ExtractOre()
     {
-        oreData.Add(miningRate);
+        oreData.Add(minerData.miningRate);
     }
 
-    public void UpgradeMiningRate(float amount)
+    private void Update()
     {
-        miningRate += amount;
-    }
+        if (minerData.isAutomation && minerData.level >= 1)
+        {
+            _timer += Time.deltaTime;
 
-    public float GetCurrentMiningRate()
-    {
-        return miningRate;
-    }
-
-    public void Load(float savedMiningRate)
-    {
-        miningRate = savedMiningRate;
+            if (_timer >= 0.5)
+            {
+                ExtractOre();
+                _timer = 0;
+            }
+        }
     }
 }

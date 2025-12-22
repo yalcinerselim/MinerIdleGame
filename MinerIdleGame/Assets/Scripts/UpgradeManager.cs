@@ -6,7 +6,7 @@ public class UpgradeManager : MonoBehaviour
 {
     [Header("Referanslar")]
     [SerializeField] private ResourceDataSO moneyData;
-    [SerializeField] private MiningController miningController;
+    [SerializeField] private MinerData minerData;
     [SerializeField] private TextMeshProUGUI costText;
     
     [SerializeField] private Button myButton;
@@ -14,7 +14,6 @@ public class UpgradeManager : MonoBehaviour
     [Header("Ayarlar")] 
     [SerializeField] private float currentCost = 10f;
     [SerializeField] private float costMultiplier = 2f;
-    [SerializeField] private float powerIncrement = 1f;
 
     private void Awake()
     {
@@ -24,9 +23,6 @@ public class UpgradeManager : MonoBehaviour
     private void OnEnable()
     {
         moneyData.OnValueChanged += CheckAffordability;
-        
-        UpdateUI();
-        CheckAffordability(moneyData.Amount);
     }
 
     private void OnDisable()
@@ -48,7 +44,7 @@ public class UpgradeManager : MonoBehaviour
             
             moneyData.Add(-oldCost);
             
-            miningController.UpgradeMiningRate(powerIncrement);
+            minerData.UpgradeMiningRate();
             
             UpdateUI();
         }
@@ -56,7 +52,14 @@ public class UpgradeManager : MonoBehaviour
 
     private void UpdateUI()
     {
-        costText.text = "Boost\n ( " +  currentCost.ToString("F0") + " M )";
+        if (minerData.isAutomation)
+        {
+            costText.text = "Boost Automation\n ( " + currentCost.ToString("F0") + " M )";
+        }
+        else
+        {
+            costText.text = "Boost\n ( " +  currentCost.ToString("F0") + " M )";
+        }
     }
 
     public float GetCurrentCost()
@@ -68,5 +71,6 @@ public class UpgradeManager : MonoBehaviour
     {
         currentCost = savedCost;
         UpdateUI();
+        CheckAffordability(moneyData.Amount);
     }
 }
