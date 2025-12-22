@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5eb87ec2daa4784a92b630b20e358fc, type: 3}
   m_Name: MoneyDataSO
   m_EditorClassIdentifier: Assembly-CSharp::ResourceDataSO
-  monetaryValue: 1
+  saveKey: KEY_MONEY

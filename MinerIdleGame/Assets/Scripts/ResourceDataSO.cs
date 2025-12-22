@@ -10,19 +10,26 @@ public class ResourceDataSO : ScriptableObject
 
     private void OnEnable()
     {
-        Amount = 0;
         OnValueChanged = null;
     }
 
     public void Add(float amount)
     {
         Amount += amount;
+        
         OnValueChanged?.Invoke(Amount);
     }
 
     public void ResetAmount()
     {
         Amount = 0;
+        
+        OnValueChanged?.Invoke(Amount);
+    }
+    
+    public void Load(float savedAmount)
+    {
+        Amount = savedAmount;
         OnValueChanged?.Invoke(Amount);
     }
 }
