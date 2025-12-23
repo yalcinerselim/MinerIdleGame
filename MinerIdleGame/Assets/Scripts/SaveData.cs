@@ -4,6 +4,7 @@ using System;
 public class SaveData
 {
     public float GoldOreCount;
+    public float GoldCount;
     public float CurrentMoney;
     public float PlayerMinerLevel;
     public float PlayerMinerUpgradeCurrentCost;
@@ -13,6 +14,7 @@ public class SaveData
     public SaveData()
     {
         GoldOreCount = 0;
+        GoldCount = 0;
         CurrentMoney = 0;
         PlayerMinerLevel = 1;
         PlayerMinerUpgradeCurrentCost = 10;

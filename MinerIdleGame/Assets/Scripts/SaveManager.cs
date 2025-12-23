@@ -7,6 +7,7 @@ public class SaveManager : MonoBehaviour
     public static SaveManager Instance;
 
     [SerializeField] private ResourceDataSO GoldOreData;
+    [SerializeField] private ResourceDataSO GoldData;
     [SerializeField] private ResourceDataSO MoneyData;
     [SerializeField] private MinerData PlayerMinerData;
     [SerializeField] private UpgradeManager PlayerMinerUpgradeManager;
@@ -34,6 +35,7 @@ public class SaveManager : MonoBehaviour
         SaveData data = new SaveData();
         data.CurrentMoney = MoneyData.Amount;
         data.GoldOreCount = GoldOreData.Amount;
+        data.GoldCount= GoldData.Amount;
         data.PlayerMinerLevel = PlayerMinerData.level;
         data.PlayerMinerUpgradeCurrentCost = PlayerMinerUpgradeManager.GetCurrentCost();
         data.AutomationMinerLevel = AutomationMinerData.level;
@@ -59,6 +61,7 @@ public class SaveManager : MonoBehaviour
             
             MoneyData.Load(data.CurrentMoney);
             GoldOreData.Load(data.GoldOreCount);
+            GoldData.Load(data.GoldCount);
             PlayerMinerData.Load(data.PlayerMinerLevel);
             PlayerMinerUpgradeManager.Load(data.PlayerMinerUpgradeCurrentCost);
             AutomationMinerData.Load(data.AutomationMinerLevel);
@@ -72,6 +75,7 @@ public class SaveManager : MonoBehaviour
             
             MoneyData.Load(0);
             GoldOreData.Load(0);
+            GoldData.Load(0);
             PlayerMinerData.Load(1);
             PlayerMinerUpgradeManager.Load(10);
             AutomationMinerData.Load(0);
@@ -83,6 +87,7 @@ public class SaveManager : MonoBehaviour
     {
         MoneyData.Load(0);
         GoldOreData.Load(0);
+        GoldData.Load(0);
         PlayerMinerData.Load(1);
         PlayerMinerUpgradeManager.Load(10);
         AutomationMinerData.Load(0);

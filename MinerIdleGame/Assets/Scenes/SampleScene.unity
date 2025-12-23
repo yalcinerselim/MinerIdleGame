@@ -1104,6 +1104,136 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975610949}
   m_CullTransparentMesh: 1
+--- !u!1001 &1096148371
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1154599182}
+    m_Modifications:
+    - target: {fileID: 196855493910325489, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 664690484924547966, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_text
+      value: 'Gold : 9999999'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4346512977528112996, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: prefix
+      value: 'Gold :'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4346512977528112996, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: resourceDataSo
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b1a669ebebb25a4285821c83b2c93ef, type: 2}
+    - target: {fileID: 4572198646695265145, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_Name
+      value: Gold Quantity TMP
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7624630088329215787, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_Name
+      value: Row_Gold
+      objectReference: {fileID: 0}
+    - target: {fileID: 7962869813244542022, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: pricePerUnit
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7962869813244542022, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: resourceToSell
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b1a669ebebb25a4285821c83b2c93ef, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+--- !u!224 &1096148372 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+  m_PrefabInstance: {fileID: 1096148371}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1153594561
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,12 +1419,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 472716369}
+  - {fileID: 1096148372}
   m_Father: {fileID: 2057904528}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 697.53, y: 464.78}
-  m_SizeDelta: {x: -1395.1, y: 0}
+  m_AnchoredPosition: {x: 593.04, y: 449.1}
+  m_SizeDelta: {x: -1186.0199, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1154599183
 MonoBehaviour:
@@ -1542,6 +1673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
   GoldOreData: {fileID: 11400000, guid: 791435d57741ba44bb6e232ead2c9e76, type: 2}
+  GoldData: {fileID: 11400000, guid: 7b1a669ebebb25a4285821c83b2c93ef, type: 2}
   MoneyData: {fileID: 11400000, guid: 3232f07af0b7c3a41848268d1a20402a, type: 2}
   PlayerMinerData: {fileID: 11400000, guid: abb2c909c7fc01a40ba33810a249e27d, type: 2}
   PlayerMinerUpgradeManager: {fileID: 1153594563}
@@ -1597,8 +1729,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1657.53, y: -21.18811}
-  m_SizeDelta: {x: 524.9, y: 40.21997}
+  m_AnchoredPosition: {x: 1605.3, y: -20.11}
+  m_SizeDelta: {x: 629.45, y: 40.22}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1499215299
 MonoBehaviour:
@@ -2205,9 +2337,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5576349391082063991, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: oreData
+      value: 
+      objectReference: {fileID: 11400000, guid: 791435d57741ba44bb6e232ead2c9e76, type: 2}
+    - target: {fileID: 5576349391082063991, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: outputData
+      value: 
+      objectReference: {fileID: 11400000, guid: 7b1a669ebebb25a4285821c83b2c93ef, type: 2}
     - target: {fileID: 7624630088329215787, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
       propertyPath: m_Name
-      value: Row_Gold
+      value: Row_GoldOre
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
