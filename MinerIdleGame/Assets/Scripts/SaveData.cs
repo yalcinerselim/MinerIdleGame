@@ -1,24 +1,26 @@
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class SaveData
 {
-    public float GoldOreCount;
-    public float GoldCount;
-    public float CurrentMoney;
-    public float PlayerMinerLevel;
-    public float PlayerMinerUpgradeCurrentCost;
-    public float AutomationMinerLevel;
-    public float AutomationMinerUpgradeCurrentCost;
+    public List<SaveItem> SavedItems;
 
     public SaveData()
     {
-        GoldOreCount = 0;
-        GoldCount = 0;
-        CurrentMoney = 0;
-        PlayerMinerLevel = 1;
-        PlayerMinerUpgradeCurrentCost = 10;
-        AutomationMinerLevel = 0;
-        AutomationMinerUpgradeCurrentCost = 500;
+        SavedItems = new List<SaveItem>();
+    }
+}
+
+[Serializable]
+public struct SaveItem
+{
+    public string Key;
+    public string Value;
+
+    public SaveItem(string key, string value)
+    {
+        Key = key;
+        Value = value;
     }
 }

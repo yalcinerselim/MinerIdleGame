@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class MiningController : MonoBehaviour
+public class MinerController : MonoBehaviour
 {
     [SerializeField] private ResourceDataSO oreData;
     [SerializeField] private MinerData minerData;

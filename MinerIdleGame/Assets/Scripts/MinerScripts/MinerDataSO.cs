@@ -1,8 +1,9 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MinerData", menuName = "Scriptable Objects/MinerData")]
-public class MinerData : ScriptableObject
+public class MinerData : ScriptableObject, ISaveable
 {
+    [SerializeField] private string saveID;
     [SerializeField] private float level;
     [SerializeField] private float miningRate = 1f;
 
@@ -10,9 +11,31 @@ public class MinerData : ScriptableObject
     
     private float _miningRateMultiplier = 1.5f;
 
-    public void Load(float savedLevel)
+    public string GetSaveID()
     {
-        level = savedLevel;
+        return saveID;
+    }
+
+    public string GetSaveData()
+    {
+        return level.ToString();
+    }
+
+    public void LoadFromSaveData(string savedData)
+    {
+        Debug.Log(savedData);
+        if (float.TryParse(savedData, out float savedLevel))
+        {
+            level = savedLevel;
+            UpdateMiningRate();
+        }
+    }
+
+    [SerializeField] private float defaultLevel = 1f;
+
+    public void ResetData()
+    {
+        level = defaultLevel;
         UpdateMiningRate();
     }
     

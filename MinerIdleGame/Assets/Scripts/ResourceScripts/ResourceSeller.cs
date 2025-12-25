@@ -5,7 +5,7 @@ public class ResourceSeller : MonoBehaviour
     [SerializeField] private ResourceDataSO resourceToSell;
     [SerializeField] private ResourceDataSO moneyData;
 
-    [SerializeField] private float pricePerUnit = 5f;
+    [SerializeField] private float pricePerUnit;
     
     public void SellAllResources()
     {

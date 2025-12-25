@@ -1,27 +1,23 @@
+using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class SaveManager : MonoBehaviour
 {
-    public static SaveManager Instance;
+    private static SaveManager _instance;
     
+    [Header("Save Settings")]
+    [SerializeField] private string saveFileName = "gamedata.json";
     
-    [SerializeField] private ResourceDataSO GoldOreData;
-    [SerializeField] private ResourceDataSO GoldData;
-    [SerializeField] private ResourceDataSO MoneyData;
-    [SerializeField] private MinerData PlayerMinerData;
-    [SerializeField] private MinerUpgradeDataSO PlayerMinerUpgradeData;
-    [SerializeField] private MinerData AutomationMinerData;
-    [SerializeField] private MinerUpgradeDataSO AutomationUpgradeData;
-    
-    private string saveFileName = "gamedata.json";
+    [Header("Data to Save")]
+    [Tooltip("Drag all ScriptableObjects that implement ISaveable here.")]
+    [SerializeField] private List<ScriptableObject> saveableObjects;
 
     private void Awake()
     {
-        if (Instance == null)
+        if (_instance == null)
         {
-            Instance = this;
+            _instance = this;
             DontDestroyOnLoad(gameObject);
             LoadGame();
         }
@@ -34,20 +30,21 @@ public class SaveManager : MonoBehaviour
     public void SaveGame()
     {
         SaveData data = new SaveData();
-        data.CurrentMoney = MoneyData.Amount;
-        data.GoldOreCount = GoldOreData.Amount;
-        data.GoldCount= GoldData.Amount;
-        data.PlayerMinerLevel = PlayerMinerData.GetLevel();
-        data.PlayerMinerUpgradeCurrentCost = PlayerMinerUpgradeData.GetCurrentCost();
-        data.AutomationMinerLevel = AutomationMinerData.GetLevel();
-        data.AutomationMinerUpgradeCurrentCost = AutomationUpgradeData.GetCurrentCost();
+
+        foreach (var obj in saveableObjects)
+        {
+            if (obj is ISaveable saveable)
+            {
+                data.SavedItems.Add(new SaveItem(saveable.GetSaveID(), saveable.GetSaveData()));
+            }
+        }
         
-        string json = JsonUtility.ToJson(data);
+        string json = JsonUtility.ToJson(data, true); // Pretty print for debug
         
         string path = Path.Combine(Application.persistentDataPath, saveFileName);
         File.WriteAllText(path, json);
         
-        Debug.Log("Oyun Kaydedildi: " + path);
+        Debug.Log("Game Saved: " + path);
     }
 
     public void LoadGame()
@@ -60,20 +57,42 @@ public class SaveManager : MonoBehaviour
             
             SaveData data = JsonUtility.FromJson<SaveData>(json);
             
-            MoneyData.Load(data.CurrentMoney);
-            GoldOreData.Load(data.GoldOreCount);
-            GoldData.Load(data.GoldCount);
-            PlayerMinerData.Load(data.PlayerMinerLevel);
-            PlayerMinerUpgradeData.Load(data.PlayerMinerUpgradeCurrentCost);
-            AutomationMinerData.Load(data.AutomationMinerLevel);
-            AutomationUpgradeData.Load(data.AutomationMinerUpgradeCurrentCost);
+            // Convert list to dictionary for faster lookup
+            Dictionary<string, string> savedDataMap = new Dictionary<string, string>();
+            if (data.SavedItems != null)
+            {
+                foreach (var item in data.SavedItems)
+                {
+                    if (!savedDataMap.ContainsKey(item.Key))
+                    {
+                        savedDataMap.Add(item.Key, item.Value);
+                    }
+                }
+            }
+
+            foreach (var obj in saveableObjects)
+            {
+                if (obj is ISaveable saveable)
+                {
+                    string id = saveable.GetSaveID();
+                    if (savedDataMap.ContainsKey(id))
+                    {
+                        saveable.LoadFromSaveData(savedDataMap[id]);
+                    }
+                    else
+                    {
+                        // New data type added since last save? Reset it or leave default.
+                        // Ideally we reset it if we expect clean state, but usually default values are enough.
+                        // Or we can call ResetData() if we want strict enforcement.
+                    }
+                }
+            }
             
-            Debug.Log("Veriler Yüklendi.");
+            Debug.Log("Data Loaded.");
         }
         else
         {
-            Debug.Log("Kayıt dosyası bulunamadı, yeni oyun başlatılıyor.");
-            
+            Debug.Log("Save file not found, starting a new game.");
             ResetGame();
         }
     }
@@ -86,8 +105,7 @@ public class SaveManager : MonoBehaviour
         if (File.Exists(path))
         {
             File.Delete(path);
-            
-            Debug.Log("Kayıt Silindi!");
+            Debug.Log("Save Deleted!");
         }
     }
 
@@ -103,12 +121,12 @@ public class SaveManager : MonoBehaviour
 
     private void ResetGame()
     {
-        MoneyData.Load(0);
-        GoldOreData.Load(0);
-        GoldData.Load(0);
-        PlayerMinerData.Load(1);
-        PlayerMinerUpgradeData.Load(10);
-        AutomationMinerData.Load(0);
-        AutomationUpgradeData.Load(500);
+        foreach (var obj in saveableObjects)
+        {
+            if (obj is ISaveable saveable)
+            {
+                saveable.ResetData();
+            }
+        }
     }
 }
