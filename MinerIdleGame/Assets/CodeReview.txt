@@ -1,0 +1,35 @@
+MinerDataSO.cs
+    - Bu script oyuncu altın cevheri çıkartma butonuna bastığında çalışan
+      MiningController script'inin verilerini tutar ve bu veriler üzerinde
+      değişiklikler / güncellemeler yapılmasını sağlayan metotları barındırır.
+    - SaveManager.cs ve MinerUpgradeManager.cs sınıfları tarafından metotlarına
+      ve verilerine erişim sağlanıyor.
+    - Kod yazımında yapılan hatalar:
+        1.(xxx) Load ve UpgradeMiningRate metotlarında tekrarlana bir kod var:
+        " miningRate = level * 1.5f; ". Bu kod tekrarı giderilmeli.
+        2.(xxx) Alanlar / değişkenler public olarak tanımlanmış, hepsi private'a
+        döndürülmeli. Dışarıdan veri erişimi metotlar üzerinden yapılmalı.
+
+MiningController.cs
+    - Bu script oyuncu altın cevheri çıkartma butonuna bastığında 
+      PlayerMinerDataSO script'inden aldığı verileri kullanarak MoneyDataSO
+      scriptable objesinin içerisindeki verileri günceller.
+    - İçerisinde, sahnedeki butona basıldığında çalışacak ve Update metodu
+      içerisinde çalışacak bir adet metot var. Bu metot Update metodu içerisinde
+      0.5 saniyede çalışacak şekilde ayarlanmış. 
+    - Kod yazımında yapılan hatalar:
+
+MinerUpgradeManager.cs
+    - Bu script "Upgrade Miner BTN" butonuna tıklandığında koşullar sağlanırsa
+      MinerData içerisindeki verileri günceller. Bu işlemi yapmak için
+      MoneyDataSO ve PlayerMinerDataSO scriptable objelerinin verilerini ve
+      metotlarını kullanır.
+    - Kod içerisindeki verilerin kaydedilebilmesi için SaveManager.cs script i
+      tarafından kullanılan metotları da barındırıyor.
+    - Kod yazımında yapılan hatalar:
+        1. Kod Tek Sorumluluk ilkesine aykırı davranıyor. Veriler ve referanslar
+        aynı anda bu kod içerisinde tutuluyor. Verileri güncelleme işlemleri de
+        UI ı güncelleme işlemleri de bu sınıf içerisinde yapılıyor.
+        Sorumlulukların ayrılması gerekiyor.
+      
+      

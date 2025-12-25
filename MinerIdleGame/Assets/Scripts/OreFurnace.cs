@@ -1,17 +1,16 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class OreFurnace : MonoBehaviour
 {
+    [SerializeField] private FurnaceDataSO furnaceData;
     [SerializeField] private Button myButton;
     
     [SerializeField] private ResourceDataSO oreData;
     [SerializeField] private ResourceDataSO outputData;
-
-    private float _meltingRate = 1f;
+    [SerializeField] private ResourceDataSO moneyData;
+    
     public bool isFurnaceOn = false;
-
     private float _timer;
 
     private void Awake()
@@ -47,7 +46,7 @@ public class OreFurnace : MonoBehaviour
             isFurnaceOn = false;
             return;
         }
-        oreData.Add(-_meltingRate);
-        outputData.Add(_meltingRate);
+        oreData.Add(-furnaceData.GetSmeltingRate());
+        outputData.Add(furnaceData.GetSmeltingRate());
     }
 }

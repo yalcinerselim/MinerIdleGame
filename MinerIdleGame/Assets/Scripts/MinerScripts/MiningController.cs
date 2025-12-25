@@ -9,12 +9,12 @@ public class MiningController : MonoBehaviour
     
     public void ExtractOre()
     {
-        oreData.Add(minerData.miningRate);
+        oreData.Add(minerData.GetMiningRate());
     }
 
     private void Update()
     {
-        if (minerData.isAutomation && minerData.level >= 1)
+        if (minerData.IsAutomation() && minerData.GetLevel() >= 1)
         {
             _timer += Time.deltaTime;
 

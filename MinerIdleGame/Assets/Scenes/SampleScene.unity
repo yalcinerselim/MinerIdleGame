@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 234615095}
   - component: {fileID: 234615094}
   - component: {fileID: 234615093}
+  - component: {fileID: 234615097}
   - component: {fileID: 234615096}
   m_Layer: 5
   m_Name: Buy Automation BTN
@@ -457,10 +458,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
   moneyData: {fileID: 11400000, guid: 3232f07af0b7c3a41848268d1a20402a, type: 2}
   minerData: {fileID: 11400000, guid: ea7a7fcef0ab17241964afbc255bd2da, type: 2}
-  costText: {fileID: 159191672}
   myButton: {fileID: 234615093}
-  currentCost: 500
-  costMultiplier: 2
+  minerUpgradeData: {fileID: 11400000, guid: 01d27eff1ba71ce469d4656c3d472128, type: 2}
+--- !u!114 &234615097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234615091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa987715b1f2454e874a9e8a7a47610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinerUpgradeDisplay
+  minerUpgradeData: {fileID: 11400000, guid: 01d27eff1ba71ce469d4656c3d472128, type: 2}
+  _currentCostText: {fileID: 159191672}
+  prefix: Upgrade Automation
 --- !u!224 &472716369 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
@@ -1246,9 +1260,10 @@ GameObject:
   - component: {fileID: 1153594566}
   - component: {fileID: 1153594565}
   - component: {fileID: 1153594564}
+  - component: {fileID: 1153594567}
   - component: {fileID: 1153594563}
   m_Layer: 5
-  m_Name: Upgrade BTN
+  m_Name: Upgrade Miner BTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1288,10 +1303,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
   moneyData: {fileID: 11400000, guid: 3232f07af0b7c3a41848268d1a20402a, type: 2}
   minerData: {fileID: 11400000, guid: abb2c909c7fc01a40ba33810a249e27d, type: 2}
-  costText: {fileID: 1779216272}
   myButton: {fileID: 1153594564}
-  currentCost: 10
-  costMultiplier: 2
+  minerUpgradeData: {fileID: 11400000, guid: 5a63cc76c112e7c43881e239e095e462, type: 2}
 --- !u!114 &1153594564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1386,6 +1399,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1153594561}
   m_CullTransparentMesh: 1
+--- !u!114 &1153594567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1153594561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfa987715b1f2454e874a9e8a7a47610, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinerUpgradeDisplay
+  minerUpgradeData: {fileID: 11400000, guid: 5a63cc76c112e7c43881e239e095e462, type: 2}
+  _currentCostText: {fileID: 1779216272}
+  prefix: Boost
 --- !u!1 &1154599181
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,9 +1704,9 @@ MonoBehaviour:
   GoldData: {fileID: 11400000, guid: 7b1a669ebebb25a4285821c83b2c93ef, type: 2}
   MoneyData: {fileID: 11400000, guid: 3232f07af0b7c3a41848268d1a20402a, type: 2}
   PlayerMinerData: {fileID: 11400000, guid: abb2c909c7fc01a40ba33810a249e27d, type: 2}
-  PlayerMinerUpgradeManager: {fileID: 1153594563}
+  PlayerMinerUpgradeData: {fileID: 11400000, guid: 5a63cc76c112e7c43881e239e095e462, type: 2}
   AutomationMinerData: {fileID: 11400000, guid: ea7a7fcef0ab17241964afbc255bd2da, type: 2}
-  AutomationUpgradeManager: {fileID: 234615096}
+  AutomationUpgradeData: {fileID: 11400000, guid: 01d27eff1ba71ce469d4656c3d472128, type: 2}
 --- !u!4 &1415166191
 Transform:
   m_ObjectHideFlags: 0
@@ -2257,6 +2285,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1154599182}
     m_Modifications:
+    - target: {fileID: 196855493910325489, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2342,9 +2374,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 791435d57741ba44bb6e232ead2c9e76, type: 2}
     - target: {fileID: 5576349391082063991, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: moneyData
+      value: 
+      objectReference: {fileID: 11400000, guid: 3232f07af0b7c3a41848268d1a20402a, type: 2}
+    - target: {fileID: 5576349391082063991, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
       propertyPath: outputData
       value: 
       objectReference: {fileID: 11400000, guid: 7b1a669ebebb25a4285821c83b2c93ef, type: 2}
+    - target: {fileID: 5576349391082063991, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: furnaceData
+      value: 
+      objectReference: {fileID: 11400000, guid: 402fbf4b2d4b19f4e84f0f8408403c87, type: 2}
     - target: {fileID: 7624630088329215787, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
       propertyPath: m_Name
       value: Row_GoldOre
