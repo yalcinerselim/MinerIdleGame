@@ -309,6 +309,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 159191670}
   m_CullTransparentMesh: 1
+--- !u!1 &206609188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 196855493910325489, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+  m_PrefabInstance: {fileID: 6854545500300807972}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &206609190 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5576349391082063991, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+  m_PrefabInstance: {fileID: 6854545500300807972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206609188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fe374bfdf5efe14ea6e8b594c3f1ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OreFurnace
+--- !u!114 &206609191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206609188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81f1271669e71b4498262f61b07f8526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OreFurnaceDisplay
+  oreFurnaceController: {fileID: 206609190}
+  myButton: {fileID: 206609192}
+  buttonText: {fileID: 2017651200}
+--- !u!114 &206609192 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2491722749254006010, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+  m_PrefabInstance: {fileID: 6854545500300807972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206609188}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
 --- !u!1 &234615091
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,13 +1742,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae205ebf018680d44b9ac63f9ffe769e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SaveManager
-  GoldOreData: {fileID: 11400000, guid: 791435d57741ba44bb6e232ead2c9e76, type: 2}
-  GoldData: {fileID: 11400000, guid: 7b1a669ebebb25a4285821c83b2c93ef, type: 2}
-  MoneyData: {fileID: 11400000, guid: 3232f07af0b7c3a41848268d1a20402a, type: 2}
-  PlayerMinerData: {fileID: 11400000, guid: abb2c909c7fc01a40ba33810a249e27d, type: 2}
-  PlayerMinerUpgradeData: {fileID: 11400000, guid: 5a63cc76c112e7c43881e239e095e462, type: 2}
-  AutomationMinerData: {fileID: 11400000, guid: ea7a7fcef0ab17241964afbc255bd2da, type: 2}
-  AutomationUpgradeData: {fileID: 11400000, guid: 01d27eff1ba71ce469d4656c3d472128, type: 2}
+  saveFileName: gamedata.json
+  saveableObjects:
+  - {fileID: 11400000, guid: ea7a7fcef0ab17241964afbc255bd2da, type: 2}
+  - {fileID: 11400000, guid: 01d27eff1ba71ce469d4656c3d472128, type: 2}
+  - {fileID: 11400000, guid: 7b1a669ebebb25a4285821c83b2c93ef, type: 2}
+  - {fileID: 11400000, guid: 791435d57741ba44bb6e232ead2c9e76, type: 2}
+  - {fileID: 11400000, guid: 3232f07af0b7c3a41848268d1a20402a, type: 2}
+  - {fileID: 11400000, guid: abb2c909c7fc01a40ba33810a249e27d, type: 2}
+  - {fileID: 11400000, guid: 5a63cc76c112e7c43881e239e095e462, type: 2}
+  - {fileID: 11400000, guid: 81e1ed245d6ba254ab794b7d4ca50e77, type: 2}
 --- !u!4 &1415166191
 Transform:
   m_ObjectHideFlags: 0
@@ -2168,6 +2213,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927688334}
   m_CullTransparentMesh: 1
+--- !u!114 &2017651200 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8211897744530590610, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+  m_PrefabInstance: {fileID: 6854545500300807972}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &2057904524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2287,7 +2343,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 196855493910325489, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491722749254006010, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491722749254006010, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491722749254006010, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 206609190}
+    - target: {fileID: 2491722749254006010, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491722749254006010, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TurnOffFurnace
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491722749254006010, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: OreFurnace, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2491722749254006010, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5225943120577799695, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
       propertyPath: m_Pivot.x
@@ -2384,7 +2468,7 @@ PrefabInstance:
     - target: {fileID: 5576349391082063991, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
       propertyPath: furnaceData
       value: 
-      objectReference: {fileID: 11400000, guid: 402fbf4b2d4b19f4e84f0f8408403c87, type: 2}
+      objectReference: {fileID: 11400000, guid: 81e1ed245d6ba254ab794b7d4ca50e77, type: 2}
     - target: {fileID: 7624630088329215787, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
       propertyPath: m_Name
       value: Row_GoldOre
@@ -2392,7 +2476,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 196855493910325489, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
+      insertIndex: 4
+      addedObject: {fileID: 206609191}
   m_SourcePrefab: {fileID: 100100000, guid: b7be0cbbd02b1134fb73d7d3a7703244, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

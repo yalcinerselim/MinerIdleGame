@@ -1,21 +1,23 @@
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class OreFurnace : MonoBehaviour
 {
     [SerializeField] private FurnaceDataSO furnaceData;
-    [SerializeField] private Button myButton;
     
     [SerializeField] private ResourceDataSO oreData;
     [SerializeField] private ResourceDataSO outputData;
     [SerializeField] private ResourceDataSO moneyData;
     
-    public bool isFurnaceOn = false;
+    public bool isFurnaceOn;
     private float _timer;
 
-    private void Awake()
+    public event Action<bool> FurnaceStateChanged;
+
+    private void OnEnable()
     {
-        myButton = GetComponent<Button>();
+        isFurnaceOn = false;
+        FurnaceStateChanged?.Invoke(isFurnaceOn);
     }
 
     private void Update()
@@ -31,19 +33,45 @@ public class OreFurnace : MonoBehaviour
         }
     }
 
-    public void TurnOnFurnace()
+    public void TurnOnOffFurnace()
     {
-        if (oreData.Amount >= 1)
+        if (isFurnaceOn)
         {
-            isFurnaceOn = true;
+            TurnOffFurnace();
         }
+        else
+        {
+            TurnOnFurnace();
+        }
+    }
+
+    private void TurnOnFurnace()
+    {
+        if (oreData.Amount >= furnaceData.GetSmeltingRate())
+        {
+            ChangeFurnaceState(true);
+        }
+    }
+
+    private void TurnOffFurnace()
+    {
+        ChangeFurnaceState(false);
+    }
+
+    private void ChangeFurnaceState(bool state)
+    {
+        isFurnaceOn = state;
+        furnaceData.SetFurnaceState(state);
+        FurnaceStateChanged?.Invoke(isFurnaceOn);
     }
 
     private void SmeltOre()
     {
         if (oreData.Amount < 1)
         {
-            isFurnaceOn = false;
+            oreData.Add(-oreData.Amount);
+            outputData.Add(oreData.Amount);
+            ChangeFurnaceState(false);
             return;
         }
         oreData.Add(-furnaceData.GetSmeltingRate());

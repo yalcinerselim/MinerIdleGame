@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3397e9ea107f5714aa20bc53666d0746, type: 3}
   m_Name: AutomationMinerDataOS
   m_EditorClassIdentifier: Assembly-CSharp::MinerData
-  level: 3
-  miningRate: 4.5
+  saveID: AutomationMinerData
+  level: 1
+  miningRate: 1.5
   isAutomation: 1
+  defaultLevel: 0

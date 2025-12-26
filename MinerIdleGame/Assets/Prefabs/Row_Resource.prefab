@@ -124,7 +124,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 5576349391082063991}
         m_TargetAssemblyTypeName: OreFurnace, Assembly-CSharp
-        m_MethodName: TurnOnFurnace
+        m_MethodName: TurnOnOffFurnace
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

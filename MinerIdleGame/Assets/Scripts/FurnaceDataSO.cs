@@ -1,30 +1,20 @@
+using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "FurnaceDataSO", menuName = "Scriptable Objects/FurnaceDataSO")]
-public class FurnaceDataSO : ScriptableObject
+public class FurnaceDataSO : ScriptableObject, ISaveable
 {
-    [SerializeField] private float _smeltingRate = 1f;
-    [SerializeField] private ResourceDataSO moneyData;
-    [SerializeField] private Button myButton;
-
-    private float _currentCost = 250;
+    [SerializeField] private string saveID;
     
+    [SerializeField] private float _smeltingRate = 1f;
+    [SerializeField] private float _defaultSmeltingRate = 1f;
+    [SerializeField] private bool furnaceState;
+
     private void OnEnable()
     {
-        moneyData.OnValueChanged += CheckAffordability;
+        furnaceState = false;
     }
 
-    private void OnDisable()
-    {
-        moneyData.OnValueChanged -= CheckAffordability;
-    }
-
-    private void CheckAffordability(float currentMoney)
-    {
-        myButton.interactable = (currentMoney >= _currentCost);
-    }
-    
     public float GetSmeltingRate()
     {
         return _smeltingRate;
@@ -35,8 +25,37 @@ public class FurnaceDataSO : ScriptableObject
         _smeltingRate += 1f;
     }
 
-    public void Load(float savedSmeltingRate)
+    public bool GetFurnaceState()
     {
-        _smeltingRate = savedSmeltingRate;
+        return furnaceState;
+    }
+    
+    public void SetFurnaceState(bool state)
+    {
+        furnaceState = state;
+    }
+
+
+    public string GetSaveID()
+    {
+        return saveID;
+    }
+
+    public string GetSaveData()
+    {
+        return _smeltingRate.ToString();
+    }
+
+    public void LoadFromSaveData(string savedData)
+    {
+        if (float.TryParse(savedData, out float savedSmeltingRate))
+        {
+            _smeltingRate = savedSmeltingRate;
+        }
+    }
+
+    public void ResetData()
+    {
+        _smeltingRate = _defaultSmeltingRate;
     }
 }

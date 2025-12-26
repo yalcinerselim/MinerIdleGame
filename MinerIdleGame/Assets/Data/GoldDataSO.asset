@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5eb87ec2daa4784a92b630b20e358fc, type: 3}
   m_Name: GoldDataSO
   m_EditorClassIdentifier: Assembly-CSharp::ResourceDataSO
+  saveID: GoldData
+  initialAmount: 0

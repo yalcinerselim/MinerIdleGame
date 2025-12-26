@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b7f943b57d4e240befd472736f17cb, type: 3}
   m_Name: AutomationMinerUpgradeDataSO
   m_EditorClassIdentifier: Assembly-CSharp::MinerUpgradeDataSO
+  saveID: AutomationMinerUpgradeData
+  defaultCost: 500
