@@ -10,7 +10,7 @@ MinerDataSO.cs
         2.(xxx) Alanlar / değişkenler public olarak tanımlanmış, hepsi private'a
         döndürülmeli. Dışarıdan veri erişimi metotlar üzerinden yapılmalı.
 
-MiningController.cs
+MinerController.cs
     - Bu script oyuncu altın cevheri çıkartma butonuna bastığında 
       PlayerMinerDataSO script'inden aldığı verileri kullanarak MoneyDataSO
       scriptable objesinin içerisindeki verileri günceller.
@@ -27,9 +27,26 @@ MinerUpgradeManager.cs
     - Kod içerisindeki verilerin kaydedilebilmesi için SaveManager.cs script i
       tarafından kullanılan metotları da barındırıyor.
     - Kod yazımında yapılan hatalar:
-        1. Kod Tek Sorumluluk ilkesine aykırı davranıyor. Veriler ve referanslar
+        1.(xxx) Kod Tek Sorumluluk ilkesine aykırı davranıyor. Veriler ve referanslar
         aynı anda bu kod içerisinde tutuluyor. Verileri güncelleme işlemleri de
         UI ı güncelleme işlemleri de bu sınıf içerisinde yapılıyor.
         Sorumlulukların ayrılması gerekiyor.
+
+ResourceDataSO.cs
+    - Bu script para, altın cevheri gibi toplanabilir ve biriktirilebilir
+      kaynakların verirlerini tutan değişkenleri ve bu veriler üzerinde değişiklik
+      yapılmasını sağlayan metotları barındırır.
+    - Amount değeri güncellendiğinde ResourceDisplay.cs scripti ile ui 
+      güncellemesi yapılabilmesi için OnValueChange event'i de kod içerisinde
+      bulunuyor.
+    - Kod yazımında yapılan hatalar: 
+
+SaveManager.cs
+    - SaveData.cs script'inin içerisindeki yapıyı kullanarak oyundaki verileri
+      bir json dosyasına kaydeder. Oyun her kapatıldığında son oyun verileri
+      ile kayıt dosyasını günceller.
+    - Oyunda önemli olan her veriyi kaydettiği için bir çok kod dosyasını
+      tanıyor. Oyun yapısı genişledikçe bu kod dosyalarının sayısı artacak.
+      Sürdürülebilir bir sistem gibi durmuyor.
       
       

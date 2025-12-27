@@ -1,11 +1,10 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class OreFurnaceDisplay : MonoBehaviour
 {
-    [SerializeField] private OreFurnace oreFurnaceController;
+    [SerializeField] private OreFurnaceManager oreFurnaceManager;
     [SerializeField] private Button myButton;
     [SerializeField] private TextMeshProUGUI buttonText;
     
@@ -16,14 +15,14 @@ public class OreFurnaceDisplay : MonoBehaviour
 
     private void OnEnable()
     {
-        oreFurnaceController.FurnaceStateChanged += ChangeButtonColor;
-        oreFurnaceController.FurnaceStateChanged += ChangeButtonText;
+        oreFurnaceManager.FurnaceStateChanged += ChangeButtonColor;
+        oreFurnaceManager.FurnaceStateChanged += ChangeButtonText;
     }
 
     private void OnDisable()
     {
-        oreFurnaceController.FurnaceStateChanged -= ChangeButtonColor;
-        oreFurnaceController.FurnaceStateChanged -= ChangeButtonText;
+        oreFurnaceManager.FurnaceStateChanged -= ChangeButtonColor;
+        oreFurnaceManager.FurnaceStateChanged -= ChangeButtonText;
     }
 
     private void ChangeButtonColor(bool furnaceState)
@@ -49,5 +48,4 @@ public class OreFurnaceDisplay : MonoBehaviour
             buttonText.text = "Start Furnace";
         }
     }
-
 }

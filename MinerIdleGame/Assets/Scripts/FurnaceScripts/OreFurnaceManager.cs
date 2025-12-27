@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class OreFurnace : MonoBehaviour
+public class OreFurnaceManager : MonoBehaviour
 {
     [SerializeField] private FurnaceDataSO furnaceData;
     
@@ -46,11 +46,9 @@ public class OreFurnace : MonoBehaviour
     }
 
     private void TurnOnFurnace()
-    {
-        if (oreData.Amount >= furnaceData.GetSmeltingRate())
-        {
-            ChangeFurnaceState(true);
-        }
+    { 
+        if(oreData.Amount <= 0) return;
+        ChangeFurnaceState(true);
     }
 
     private void TurnOffFurnace()
@@ -67,7 +65,7 @@ public class OreFurnace : MonoBehaviour
 
     private void SmeltOre()
     {
-        if (oreData.Amount < 1)
+        if (oreData.Amount < furnaceData.GetSmeltingRate())
         {
             oreData.Add(-oreData.Amount);
             outputData.Add(oreData.Amount);

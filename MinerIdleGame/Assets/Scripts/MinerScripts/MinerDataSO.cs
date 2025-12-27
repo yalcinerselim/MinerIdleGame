@@ -23,7 +23,6 @@ public class MinerData : ScriptableObject, ISaveable
 
     public void LoadFromSaveData(string savedData)
     {
-        Debug.Log(savedData);
         if (float.TryParse(savedData, out float savedLevel))
         {
             level = savedLevel;

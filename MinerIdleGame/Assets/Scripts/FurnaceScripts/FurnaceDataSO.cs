@@ -10,9 +10,12 @@ public class FurnaceDataSO : ScriptableObject, ISaveable
     [SerializeField] private float _defaultSmeltingRate = 1f;
     [SerializeField] private bool furnaceState;
 
+    private float _furnaceUpdateCost;
+
     private void OnEnable()
     {
         furnaceState = false;
+        _furnaceUpdateCost = 350;
     }
 
     public float GetSmeltingRate()
@@ -22,7 +25,7 @@ public class FurnaceDataSO : ScriptableObject, ISaveable
     
     public void UpgradeFurnace()
     {
-        _smeltingRate += 1f;
+        _smeltingRate += 2f;
     }
 
     public bool GetFurnaceState()
@@ -57,5 +60,10 @@ public class FurnaceDataSO : ScriptableObject, ISaveable
     public void ResetData()
     {
         _smeltingRate = _defaultSmeltingRate;
+    }
+
+    public float GetFurnaceUpdateCost()
+    {
+        return _furnaceUpdateCost;
     }
 }
